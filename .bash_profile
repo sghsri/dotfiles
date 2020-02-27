@@ -2,6 +2,7 @@
 # Setting PATH for Python 3.7
 # The original version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
+PROMPT_DIRTRIM=3
 export PATH
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -12,7 +13,8 @@ if [ -f '/Users/sriramhariharan/exec -l /bin/bash/google-cloud-sdk/completion.ba
 
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
-export PS1="\$txtgrn\]sriram:\[\$txtpur\]\w \[\$txtcyn\]\$git_branch\[\$bldylw\]\$git_dirty\[\$txtrst\] \$ "
+reset=$(tput sgr0)   # \e[0m
+export PS1="\[\$txtgrn\]sriram:\[\$txtpur\]\w\[\$txtcyn\]\$git_branch\[\$bldylw\]\$git_dirty\[\$txtrst\] \$ "
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
    . $(brew --prefix)/etc/bash_completion
@@ -22,7 +24,7 @@ fi
 # =============
 
 
-alias cslab="ssh sghsri@vyasa.cs.utexas.edu"
+alias utcs="ssh sghsri@vyasa.cs.utexas.edu"
 alias vbp="vim ~/.bash_profile"
 alias sbp="source ~/.bash_profile"
 alias sl="ls"
@@ -34,3 +36,9 @@ export CLICOLOR=1
 
 # Set colors to match iTerm2 Terminal Colors
 export TERM=xterm-256color
+
+export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
+
+function title {
+    echo -ne "\033]0;"$*"\007"
+}

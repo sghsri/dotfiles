@@ -1,0 +1,2 @@
+PROMPT_DIRTRIM=3
+
