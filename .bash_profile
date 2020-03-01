@@ -13,8 +13,13 @@ if [ -f '/Users/sriramhariharan/exec -l /bin/bash/google-cloud-sdk/completion.ba
 
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
+
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 reset=$(tput sgr0)   # \e[0m
-export PS1="\[\$txtgrn\]sriram:\[\$txtpur\]\w\[\$txtcyn\]\$git_branch\[\$bldylw\]\$git_dirty\[\$txtrst\] \$ "
+export PS1="\[\$txtgrn\]sriram:\[\$txtpur\]\w\[\$txtcyn\]\$(parse_git_branch)\[\$bldylw\]\$git_dirty\[\$txtrst\] \$ "
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
    . $(brew --prefix)/etc/bash_completion
