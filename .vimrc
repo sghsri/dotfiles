@@ -1,6 +1,9 @@
 " Don't try to be vi compatible
 set nocompatible
 
+" clipboard 
+set clipboard=unnamed
+
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 
