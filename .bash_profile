@@ -24,41 +24,18 @@ parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-function git_color {
-  local git_status="$(git status 2> /dev/null)"
-
-  if [[ ! $git_status =~ "working directory clean" ]]; then
-    echo -e $txtcyn
-  elif [[ $git_status =~ "Your branch is ahead of" ]]; then
-    echo -e $txtylw
-  elif [[ $git_status =~ "nothing to commit" ]]; then
-    echo -e $txtgrn
+find_git_dirty() {
+  local status=$(git status --porcelain 2> /dev/null)
+  if [[ "$status" != "" ]]; then
+    echo "*"
   else
-    echo -e $txtred
-  fi
-}
-
-function git_branch {
-  local git_status="$(git status 2> /dev/null)"
-  local on_branch="On branch ([^${IFS}]*)"
-  local on_commit="HEAD detached at ([^${IFS}]*)"
-
-  if [[ $git_status =~ $on_branch ]]; then
-    local branch=${BASH_REMATCH[1]}
-    echo "($branch)"
-  elif [[ $git_status =~ $on_commit ]]; then
-    local commit=${BASH_REMATCH[1]}
-    echo "($commit)"
+    echo ""
   fi
 }
 
 # reset=$(tput sgr0)   # \e[0m
-# export PS1="\[\$txtgrn\]sriram:\[\$txtpur\]\w\[\$txtcyn\]\$(parse_git_branch)\[\$bldylw\]\$git_dirty\[\$txtrst\] \$ "
-PS1="\[\$txtgrn\]sriram:\[$txtpur\]\w "
-PS1+="\[$(git_color)\]"
-PS1+="\$(git_branch)"
-PS1+="\[\$txtrst\] \$ "
-export PS1
+export PS1="\[\$txtgrn\]sriram:\[\$txtpur\]\w\[\$txtcyn\]\$(parse_git_branch)\[\$bldylw\]\$(find_git_dirty)\[\$txtrst\] \$ "
+
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
    . $(brew --prefix)/etc/bash_completion
 fi
