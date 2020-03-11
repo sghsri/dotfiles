@@ -13,12 +13,15 @@ if [ -f '/Users/sriramhariharan/exec -l /bin/bash/google-cloud-sdk/completion.ba
 
 txtblk="$(tput setaf 0 2>/dev/null || echo '\e[0;30m')"  # Black
 txtred="$(tput setaf 1 2>/dev/null || echo '\e[0;31m')"  # Red
-txtgrn="$(tput setaf 2 2>/dev/null || echo '\e[0;32m')"  # Green
+txtgrn="$(tput setaf 2 2>/dev/null || echo '\e[011111111111;32m')"  # Green
 txtylw="$(tput setaf 3 2>/dev/null || echo '\e[0;33m')"  # Yellow
 txtblu="$(tput setaf 4 2>/dev/null || echo '\e[0;34m')"  # Blue
 txtpur="$(tput setaf 5 2>/dev/null || echo '\e[0;35m')"  # Purple
 txtcyn="$(tput setaf 6 2>/dev/null || echo '\e[0;36m')"  # Cyan
 txtwht="$(tput setaf 7 2>/dev/null || echo '\e[0;37m')"  # White
+txtrst="$(tput sgr 0 2>/dev/null || echo '\e[0m')"  # Text Reset
+
+
 
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -34,7 +37,7 @@ find_git_dirty() {
 }
 
 # reset=$(tput sgr0)   # \e[0m
-export PS1="\[\$txtgrn\]sriram:\[\$txtpur\]\w\[\$txtcyn\]\$(parse_git_branch)\[\$bldylw\]\$(find_git_dirty)\[\$txtrst\] \$ "
+export PS1="\[\$txtgrn\]sriram:\[\$txtpur\]\w\[\$txtylw\]\$(parse_git_branch)\[\$bldylw\]\$(find_git_dirty)\[\$txtrst\] -> "
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
    . $(brew --prefix)/etc/bash_completion
@@ -46,10 +49,15 @@ fi
 
 alias utcs="ssh sghsri@vyasa.cs.utexas.edu"
 alias vbp="vim ~/.bash_profile"
+alias vvv="vim ~/.vimrc"
 alias sbp="source ~/.bash_profile"
 alias sl="ls"
 alias proj="cd ~/Desktop/Projects/"
-
+alias gb="git branch"
+alias gco="git checkout "
+alias gc="git commit"
+alias ga="git add "
+alias gs="git status "
 
 
 # Set CLICOLOR if you want Ansi Colors in iTerm2 
