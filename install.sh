@@ -2,7 +2,7 @@ cp .bashrc ~/
 cp .inputrc ~/
 cp .bash_profile ~/
 cp .vimrc ~/
-cp .vim ~/
+cp -R .vim ~/
 
 source ~/.bash_profile
 source ~/.inputrc
