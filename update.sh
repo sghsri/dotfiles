@@ -1,7 +1,7 @@
 cp ~/.inputrc .
 cp ~/.bash_profile .
 cp ~/.vimrc .
-cp ~/.vim .
+cp -R ~/.vim .
 cp ~/.bashrc .
 
 git add .
