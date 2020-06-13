@@ -52,12 +52,19 @@ alias vbp="vim ~/.bash_profile"
 alias vvv="vim ~/.vimrc"
 alias sbp="source ~/.bash_profile"
 alias sl="ls"
+alias desk="cd ~/Desktop/"
 alias proj="cd ~/Desktop/Projects/"
+alias work="cd ~/Desktop/Work"
+alias cmeweb="cd ~/Local\ Sites/mediaengagementorg/app/public/wp-content/themes/engage/"
+alias apply="cd ~/Desktop/Projects/applyfyi/"
+alias instok="cd ~/Desktop/Projects/Instok/"
+alias regplus="cd ~/Desktop/Projects/UT-Registration-Plus/"
 alias gb="git branch"
 alias gco="git checkout "
 alias gc="git commit"
 alias ga="git add "
 alias gs="git status "
+alias composer="php /usr/local/bin/composer.phar"
 
 
 # Set CLICOLOR if you want Ansi Colors in iTerm2 
@@ -71,3 +78,7 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 function title {
     echo -ne "\033]0;"$*"\007"
 }
+
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
