@@ -3,7 +3,7 @@ cp ~/.bash_profile .
 cp ~/.vimrc .
 cp -R ~/.vim .
 cp ~/.bashrc .
-cp ~/.git-completion.bash
+cp ~/.git-completion.bash .
 
 
 git add .
