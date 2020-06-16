@@ -52,19 +52,46 @@ alias vbp="vim ~/.bash_profile"
 alias vvv="vim ~/.vimrc"
 alias sbp="source ~/.bash_profile"
 alias sl="ls"
-alias desk="cd ~/Desktop/"
-alias proj="cd ~/Desktop/Projects/"
-alias work="cd ~/Desktop/Work"
-alias cmeweb="cd ~/Local\ Sites/mediaengagementorg/app/public/wp-content/themes/engage/"
-alias apply="cd ~/Desktop/Projects/applyfyi/"
-alias instok="cd ~/Desktop/Projects/Instok/"
-alias regplus="cd ~/Desktop/Projects/UT-Registration-Plus/"
 alias gb="git branch"
 alias gco="git checkout "
 alias gc="git commit"
 alias ga="git add "
 alias gs="git status "
 alias composer="php /usr/local/bin/composer.phar"
+
+function !desk { 
+      cd ~/Desktop/; 
+}
+function !proj { 
+  cd ~/Desktop/Projects/; 
+}
+function !work { cd ~/Desktop/Work/; }
+function !school { cd ~/Desktop/School/; }
+function !cme { cd /Users/sriramhariharan/Local\ Sites/mediaengagementorg/app/public/wp-content/themes/engage; }
+function !apply { cd ~/Desktop/Projects/applyfyi/; }
+function !instok { cd ~/Desktop/Projects/Instok/; }
+function !reg { cd ~/Desktop/Projects/UT-Registration-Plus/; }
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+
+function !!anchor {
+  echo Anchor Name?
+  read anchor_name
+  echo Are you sure you want to create an Anchor at ${bold} $PWD ${normal} called ${bold} $anchor_name...${normal} \(y/n\)?
+  read answer
+  if [[ "$answer" = "y" ]] ; then
+    # need to add alias to this file, and then add to git-completion bash
+    function_text="function !$anchor_name { cd $PWD; }"
+    echo "$function_text" >> ~/.bash_profile
+    sbp
+    echo Successfuly added !$anchor_name pointing to "${PWD##*/}" 
+  fi
+
+}
+
+
 
 
 # Set CLICOLOR if you want Ansi Colors in iTerm2 
@@ -82,3 +109,7 @@ function title {
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
+function !life { cd /Users/sriramhariharan/Desktop/Life; }
+
+
+function !dot { cd /Users/sriramhariharan/dotfiles; }
