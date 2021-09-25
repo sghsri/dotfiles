@@ -7,7 +7,7 @@ cp ~/.git-completion.bash .
 cp ~/.zshrc .
 cp -R ~/.oh-my-zsh/ ./oh-my-zsh/
 cd ./oh-my-zsh/; rm -rf .git; cd ..
-cp ~/my_scripts .
+cp -R ~/my_scripts .
 
 
 git add .
