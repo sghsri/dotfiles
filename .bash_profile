@@ -52,6 +52,8 @@ alias vbp="vim ~/.bash_profile"
 alias vvv="vim ~/.vimrc"
 alias sbp="source ~/.bash_profile"
 alias sl="ls"
+alias ...="cd ../../"
+alias ..="cd ../"
 alias gb="git branch"
 alias gco="git checkout "
 alias gc="git commit"
@@ -109,6 +111,8 @@ function title {
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
+
+
 function !life { cd /Users/sriramhariharan/Desktop/Life; }
 
 
