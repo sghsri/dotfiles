@@ -39,6 +39,10 @@ find_git_dirty() {
 # reset=$(tput sgr0)   # \e[0m
 export PS1="\[\$txtgrn\]sriram:\[\$txtpur\]\w\[\$txtylw\]\$(parse_git_branch)\[\$bldylw\]\$(find_git_dirty)\[\$txtrst\] -> "
 
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+   . $(brew --prefix)/etc/bash_completion
+fi
+
 # ALIASES
 # =============
 
@@ -113,6 +117,3 @@ function !life { cd /Users/sriramhariharan/Desktop/Life; }
 
 
 function !dot { cd /Users/sriramhariharan/dotfiles; }
-
-
-export NVM_DIR="$HOME/.nvm"; [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
