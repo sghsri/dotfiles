@@ -5,7 +5,7 @@ cp -R ~/.vim .
 cp ~/.bashrc .
 cp ~/.git-completion.bash .
 cp ~/.zshrc .
-cp -R ~/.oh-my-zsh/
+cp -R ~/.oh-my-zsh/ ./oh-my-zsh/
 
 
 git add .
