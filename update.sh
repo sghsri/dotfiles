@@ -4,7 +4,7 @@ cp ~/.vimrc .
 cp -R ~/.vim .
 cp ~/.bashrc .
 cp ~/.git-completion.bash .
-cp ~/.zshrc
+cp ~/.zshrc .
 
 
 git add .
